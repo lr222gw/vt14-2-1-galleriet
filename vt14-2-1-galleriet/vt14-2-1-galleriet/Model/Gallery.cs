@@ -17,9 +17,9 @@ namespace vt14_2_1_galleriet.Model
 
         private readonly static Regex SantizePath;
 
-        private static Gallery() // konstruktor..
+        static Gallery() // konstruktor..
         {
-            ApprovedExtension = new Regex("^.*\\.(gif|jpg|png)$", RegexOptions.IgnoreCase);
+            ApprovedExtension = new Regex(@"^.*\.(gif|jpg|png)$", RegexOptions.IgnoreCase);
 
             var invalidChars = new string(Path.GetInvalidFileNameChars());
 
@@ -31,20 +31,72 @@ namespace vt14_2_1_galleriet.Model
 
         public IEnumerable<string> GetImageNames()
         {
-            throw new NotImplementedException();
+
+            DirectoryInfo dInfo = new DirectoryInfo(PhysicalUploadImagePath);            
+
+            var listOfFiles = dInfo.GetFiles();
+
+            IEnumerable<string> ListOfNames = new IEnumerable<string>;
+            
+            
+            
+
+            for(var i = 0; i < listOfFiles.Length; i++)
+            {
+                ListOfNames. = listOfFiles[0].Name;
+            }
+
+            
         }
 
         public bool ImageExists(string name)
         {
+
+            IEnumerable<string> listOfNames = GetImageNames();
+
             throw new NotImplementedException();
         }
 
         private bool isValidImage(Image image)
         {
-            throw new NotImplementedException();
+
+            var png = System.Drawing.Imaging.ImageFormat.Png.Guid;
+            var jpg = System.Drawing.Imaging.ImageFormat.Jpeg.Guid;
+            var gif = System.Drawing.Imaging.ImageFormat.Gif.Guid;
+            var thisPicMime = image.RawFormat.Guid;
+
+            if (thisPicMime == png || thisPicMime == jpg || thisPicMime == gif) // om memetypen är samma i bilden som gif/jpg/png
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string SaveImage(Stream stream, string fileName){
+
+            Image image = System.Drawing.Image.FromStream(stream); //converterar till Bild..
+
+            if (isValidImage(image)) // om bilden har rätt meme-typ! 
+            {
+                if (ApprovedExtension.IsMatch(fileName)) // om filnamnet slutar på gif/png/jpg
+                {
+                    var newFileName = SantizePath.Replace(fileName, "_");// om namnet innehåller ogiltiga tecken ersätt dem.. (tror det är såhär man gör..
+                    // om namnet inte är ogiltigt så sparas det giltiga nament ner i newFileName
+                    ImageExists(newFileName);
+
+                }
+                else
+                {
+                    throw new InvalidDataException(); // kastar ett fel om att datan är ogiltig
+                }
+
+            }
+            
+            
+
             throw new NotImplementedException();
         }
 

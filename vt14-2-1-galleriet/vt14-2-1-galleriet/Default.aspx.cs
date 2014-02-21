@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using vt14_2_1_galleriet.Model;
 
 namespace vt14_2_1_galleriet
 {
@@ -12,6 +13,15 @@ namespace vt14_2_1_galleriet
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void uploadButton_Click(object sender, EventArgs e)
+        {
+            Gallery galleryObj = new Gallery();
+
+            galleryObj.SaveImage(GalleryFileUploader.FileContent, GalleryFileUploader.FileName);
+
+            
         }
     }
 }

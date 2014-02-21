@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="vt14_2_1_galleriet.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="vt14_2_1_galleriet.Default" ViewStateMode="Disabled" %>
 
 <!DOCTYPE html>
 
@@ -22,8 +22,11 @@
             </asp:ListView>
         </div>
         <div id="uploadBox">
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
             <asp:FileUpload ID="GalleryFileUploader" runat="server"  />
-            <asp:Button ID="uploadButton" runat="server" Text="Upload" />
+            <asp:Button ID="uploadButton" runat="server" Text="Upload" OnClick="uploadButton_Click"   />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Fil måste väljas" ControlToValidate="GalleryFileUploader" Display="Dynamic">*</asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Rätt filtyp måste väljas (JPG, PNG, GIF)" Text="*" ControlToValidate="GalleryFileUploader" Display="Dynamic" ValidationExpression="^.*\.(gif|jpg|png)$">*</asp:RegularExpressionValidator>
         </div>
     </div>
     </form>
