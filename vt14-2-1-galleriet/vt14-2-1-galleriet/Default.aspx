@@ -10,8 +10,21 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
+    <div id="gallery">
+        <div id="imageBox">
+            <asp:Repeater ID="Repeater1" runat="server"></asp:Repeater>
+        </div>
+        <div id="thumbnailBox">
+            <asp:ListView ID="ListView1" runat="server">
+                <ItemTemplate>
+
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
+        <div id="uploadBox">
+            <asp:FileUpload ID="GalleryFileUploader" runat="server"  />
+            <asp:Button ID="uploadButton" runat="server" Text="Upload" />
+        </div>
     </div>
     </form>
     <%-- ↓ Här kommer javascripten ↓--%>
