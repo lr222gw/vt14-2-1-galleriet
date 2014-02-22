@@ -13,7 +13,7 @@ namespace vt14_2_1_galleriet.Model
 
         private readonly static Regex ApprovedExtension;
 
-        private readonly static string PhysicalUploadImagePath;
+        private readonly static string PhysicalUploadImagePath;  
 
         private readonly static string PhysicalUploadThumbnailPath;
 
@@ -31,6 +31,16 @@ namespace vt14_2_1_galleriet.Model
             //↑Sökvägen är mer kompatibel med olika operativsystem etc..
 
             PhysicalUploadThumbnailPath = Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(), @"pics/thumbnails");
+        }
+
+        public List<string> getPaths()
+        {
+            List<string> pathList = new List<string>();
+
+            pathList.Add(PhysicalUploadImagePath);      // Metoden gör att pathList[0] blir vägen till vanliga bildmappen
+            pathList.Add(PhysicalUploadThumbnailPath);  // Metoden gör att pathList[1] blir vägen till thumbnail bildmappen
+
+            return pathList;
         }
 
         public IEnumerable<string> GetImageNames()
@@ -113,6 +123,9 @@ namespace vt14_2_1_galleriet.Model
                     {
                         thumbNail.Save(Path.Combine(PhysicalUploadThumbnailPath, finalName)); // Sparar ner till sökvägen för Path + Namnet på filen..
                         image.Save(Path.Combine(PhysicalUploadImagePath, finalName));
+
+                        return "Bilden laddas upp !";
+
                     }catch(Exception)
                     {
                         throw new ArgumentException("Något blev fel vid nedsparningen av bilden...");
@@ -125,7 +138,8 @@ namespace vt14_2_1_galleriet.Model
                 }
 
             }
-            return "ho";
+            return "Datan i bilden är ogiltig.";
+            
         }
 
     }

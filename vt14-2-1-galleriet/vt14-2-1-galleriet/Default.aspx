@@ -15,9 +15,9 @@
             <asp:Repeater ID="Repeater1" runat="server"></asp:Repeater>
         </div>
         <div id="thumbnailBox">
-            <asp:ListView ID="ListView1" runat="server">
+            <asp:ListView ID="ListView1" runat="server" ItemType="System.IO.FileInfo" SelectMethod="ListView1_GetData">
                 <ItemTemplate>
-
+                    <div><%#: Item.Name %></div>
                 </ItemTemplate>
             </asp:ListView>
         </div>
