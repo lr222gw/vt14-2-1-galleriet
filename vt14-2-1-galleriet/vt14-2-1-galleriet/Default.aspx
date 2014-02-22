@@ -15,11 +15,15 @@
             <asp:Repeater ID="Repeater1" runat="server"></asp:Repeater>
         </div>
         <div id="thumbnailBox">
-            <asp:ListView ID="ListView1" runat="server" ItemType="System.IO.FileInfo" SelectMethod="ListView1_GetData">
+
+            <asp:Repeater ID="Repeater2" runat="server" ItemType="System.IO.FileInfo" SelectMethod="Repeater2_GetData">
                 <ItemTemplate>
-                    <div><%#: Item.Name %></div>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: "Default.aspx?" + Server.UrlEncode(Item.Name)  %>'>
+                        <asp:Image runat="server"  ImageUrl='<%#  @"~\pics\thumbnails\" + Item.Name  %>' />
+                    </asp:HyperLink>
                 </ItemTemplate>
-            </asp:ListView>
+            </asp:Repeater>
+
         </div>
         <div id="uploadBox">
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" />

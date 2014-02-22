@@ -14,7 +14,7 @@ namespace vt14_2_1_galleriet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Varje gång sidan får en Get  vill jag kolla Query-Strängen om en bild ska laddas upp i bildvisaren..
         }
 
         protected void uploadButton_Click(object sender, EventArgs e)
@@ -26,17 +26,15 @@ namespace vt14_2_1_galleriet
             
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
-        public IEnumerable<FileInfo> ListView1_GetData()
+        public IEnumerable<FileInfo> Repeater2_GetData()
         {
+
             service myService = new service();
-            return myService.GetThumbNails();
+            
+            var h = myService.GetThumbNails(); 
+            return h;
         }
+
 
 
     }
