@@ -12,7 +12,7 @@
     <form id="form1" runat="server">
     <div id="gallery">
         <div id="imageBox">
-            <asp:Repeater ID="Repeater1" runat="server"></asp:Repeater>
+            <asp:Image ID="ImageHolder" runat="server"  ImageUrl="~\pics\bg.jpg"/>
         </div>
         <div id="thumbnailBox">
 

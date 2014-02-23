@@ -15,6 +15,15 @@ namespace vt14_2_1_galleriet
         protected void Page_Load(object sender, EventArgs e)
         {
             // Varje gång sidan får en Get  vill jag kolla Query-Strängen om en bild ska laddas upp i bildvisaren..
+
+            string qString = Convert.ToString(Request.QueryString); // hämtar ner QueryStringen och gemför med vad som finns i Pics, sen visar upp bild...
+
+            var service = new service();
+
+            var imageSource = service.GetPicFromThumbNailName(qString);
+
+            ImageHolder.ImageUrl = imageSource;
+            
         }
 
         protected void uploadButton_Click(object sender, EventArgs e)
