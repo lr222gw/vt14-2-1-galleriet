@@ -31,6 +31,33 @@ namespace vt14_2_1_galleriet {
         protected global::System.Web.UI.WebControls.Image ImageHolder;
         
         /// <summary>
+        /// messagebox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messagebox;
+        
+        /// <summary>
+        /// MessageForUppload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MessageForUppload;
+        
+        /// <summary>
+        /// closeMessageForUppload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button closeMessageForUppload;
+        
+        /// <summary>
         /// Repeater2 control.
         /// </summary>
         /// <remarks>

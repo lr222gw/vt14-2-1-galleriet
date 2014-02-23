@@ -13,6 +13,10 @@
     <div id="gallery">
         <div id="imageBox">
             <asp:Image ID="ImageHolder" runat="server"  ImageUrl="~\pics\bg.jpg"/>
+            <div id="messagebox" runat="server"  visible="false">
+                <asp:Label ID="MessageForUppload" runat="server" Text="Label"></asp:Label>
+                <asp:Button ID="closeMessageForUppload" runat="server" Text="X" OnClick="closeMessageForUppload_Click" CausesValidation="False" />
+            </div>
         </div>
         <div id="thumbnailBox">
 

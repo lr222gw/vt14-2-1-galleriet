@@ -1,12 +1,55 @@
 ﻿body {
-    background-color: red;
+    background-color: rgb(220, 240, 241);
 }
 
 #gallery {
-height: 503px;
 width: 50%;
+margin: 0 auto;
+border: black solid 2px;
+display: block;
 }
 
 #ImageHolder {
-width: 500px;
+max-height: 470px;
+max-width: 500px;
+padding-top: 15px;
+margin: 0 auto;
+display: block;
+}
+#imageBox {
+height: 500px;
+background-color: rgb(190, 22, 197);
+}
+#thumbnailBox {
+padding: 10px;
+background-color: rgb(100, 0, 119);
+border-top: 2px black solid;
+box-shadow: inset black 0px 0px 70px -5px;
+height: 60px;
+overflow-x: hidden;
+}
+#uploadBox {
+padding: 10px;
+background-color: rgb(182, 122, 182);
+border-top: 1px black solid;
+}
+
+#MessageForUppload {
+padding: 5px;
+font-size: 2em;
+}
+
+#messagebox {
+padding: 10px;
+margin: 0 auto;
+display: block;
+width: 356px;
+position: relative;
+background-color: rgb(194, 0, 255);
+box-shadow: black 0px 0px 55px 10px;
+}
+
+.marked {
+
+border: green 3px solid;
 }

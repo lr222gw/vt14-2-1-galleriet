@@ -10,6 +10,7 @@ namespace vt14_2_1_galleriet.Model
 {
     public class Gallery
     {
+        public string LatestUploadedImage;
 
         private readonly static Regex ApprovedExtension;
 
@@ -123,6 +124,8 @@ namespace vt14_2_1_galleriet.Model
                     {
                         thumbNail.Save(Path.Combine(PhysicalUploadThumbnailPath, finalName)); // Sparar ner till sökvägen för Path + Namnet på filen..
                         image.Save(Path.Combine(PhysicalUploadImagePath, finalName));
+
+                        LatestUploadedImage = @"~\pics\" + finalName; //sparar ner den senaste uppladdade bilden för att kunna hämta ut den sen..
 
                         return "Bilden laddas upp !";
 

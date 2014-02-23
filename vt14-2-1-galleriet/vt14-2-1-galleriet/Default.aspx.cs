@@ -14,6 +14,19 @@ namespace vt14_2_1_galleriet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //Varje gång sidan laddas vill jag se till att det inte står något i min MessageForUppload.Text, så vida inget annat är sparat i sessionsvariablen..s ... 
+            if (Session["answer"] != null)
+            {
+                MessageForUppload.Text = Session["answer"].ToString();
+                messagebox.Visible = true;
+                //MessageForUppload.Text = "";
+
+                Session["answer"] = null;
+
+            }
+            
+
             // Varje gång sidan får en Get  vill jag kolla Query-Strängen om en bild ska laddas upp i bildvisaren..
 
             string qString = Convert.ToString(Request.QueryString); // hämtar ner QueryStringen och gemför med vad som finns i Pics, sen visar upp bild...
@@ -35,9 +48,22 @@ namespace vt14_2_1_galleriet
         protected void uploadButton_Click(object sender, EventArgs e)
         {
             Gallery galleryObj = new Gallery();
+            try{
+                string answer = galleryObj.SaveImage(GalleryFileUploader.FileContent, GalleryFileUploader.FileName);
+                messagebox.Visible = true;
+                
+                ImageHolder.ImageUrl = galleryObj.LatestUploadedImage;
+                Session["answer"] = answer;
+                Response.Redirect("Default.aspx?" + HttpUtility.UrlEncode(GalleryFileUploader.FileName)); // Bilden man ändrats till får en QueryString = om man kryssar ner rutan (som gör en GET) så visas senaste bilden.
+                //MessageForUppload.Text = answer;
 
-            galleryObj.SaveImage(GalleryFileUploader.FileContent, GalleryFileUploader.FileName);
+                
 
+            }catch(FormatException)
+            {
+                throw new FormatException();
+            }
+            
             
         }
 
@@ -48,6 +74,11 @@ namespace vt14_2_1_galleriet
             
             var h = myService.GetThumbNails(); 
             return h;
+        }
+
+        protected void closeMessageForUppload_Click(object sender, EventArgs e)
+        {
+            messagebox.Visible = false;
         }
 
 
