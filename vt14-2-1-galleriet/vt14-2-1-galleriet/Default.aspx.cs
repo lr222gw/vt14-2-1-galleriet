@@ -22,7 +22,13 @@ namespace vt14_2_1_galleriet
 
             var imageSource = service.GetPicFromThumbNailName(qString);
 
-            ImageHolder.ImageUrl = imageSource;
+            if(imageSource != null && imageSource != ""){
+                ImageHolder.ImageUrl = imageSource;
+            }
+            else
+            {
+                ImageHolder.ImageUrl = @"~\pics\bg.jpg";
+            }
             
         }
 

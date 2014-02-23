@@ -29,11 +29,11 @@ namespace vt14_2_1_galleriet.Model
             {
                 if (HttpUtility.UrlEncode(fileListFromPicFolder[i].Name) == thumbNailImg) // eftersom jag Encodat Thumbnailsen i aspx filen så gör jag det här. Encodeningen SKA vara samma.. (annars kan jag ej gemföra..)
                 {
-                    return  @"~\pics\" +(HttpUtility.UrlEncode(fileListFromPicFolder[i].Name)); //om matchat, returnera det som behövs för att bilden ska kunna synas i en IMG-tagg som src...
+                    return  @"~\pics\" +fileListFromPicFolder[i].Name; //om matchat, returnera det som behövs för att bilden ska kunna synas i en IMG-tagg som src...
                 }
             }
 
-            return "hh";
+            return null;
         }
 
 
