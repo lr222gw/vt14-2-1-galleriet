@@ -47,22 +47,30 @@ namespace vt14_2_1_galleriet
 
         protected void uploadButton_Click(object sender, EventArgs e)
         {
-            Gallery galleryObj = new Gallery();
-            try{
-                string answer = galleryObj.SaveImage(GalleryFileUploader.FileContent, GalleryFileUploader.FileName);
-                messagebox.Visible = true;
-                
-                ImageHolder.ImageUrl = galleryObj.LatestUploadedImage;
-                Session["answer"] = answer;
-                Response.Redirect("Default.aspx?" + HttpUtility.UrlEncode(GalleryFileUploader.FileName)); // Bilden man ändrats till får en QueryString = om man kryssar ner rutan (som gör en GET) så visas senaste bilden.
-                //MessageForUppload.Text = answer;
-
-                
-
-            }catch(FormatException)
+            if(IsValid)
             {
-                throw new FormatException();
+                Gallery galleryObj = new Gallery();
+                try{
+                    string answer = galleryObj.SaveImage(GalleryFileUploader.FileContent, GalleryFileUploader.FileName);
+                    messagebox.Visible = true;
+                
+                    ImageHolder.ImageUrl = galleryObj.LatestUploadedImage;
+                    Session["answer"] = answer;
+                    Response.Redirect("Default.aspx?" + HttpUtility.UrlEncode(GalleryFileUploader.FileName)); // Bilden man ändrats till får en QueryString = om man kryssar ner rutan (som gör en GET) så visas senaste bilden.
+                    //MessageForUppload.Text = answer;
+
+                
+
+                }catch(FormatException)
+                {
+                    throw new FormatException();
+                }
             }
+            else
+            {
+                throw new ArgumentException("Data is not valid..");
+            }
+
             
             
         }

@@ -26,7 +26,7 @@ namespace vt14_2_1_galleriet.Model
 
             var invalidChars = new string(Path.GetInvalidFileNameChars());
 
-            SantizePath = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));
+            SantizePath = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars + "åäö")));
 
             PhysicalUploadImagePath = Path.Combine(AppDomain.CurrentDomain.GetData("APPBASE").ToString(), @"pics");
             //↑Sökvägen är mer kompatibel med olika operativsystem etc..
