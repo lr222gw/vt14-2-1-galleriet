@@ -35,7 +35,7 @@
             <asp:Button ID="uploadButton" runat="server" Text="Upload" OnClick="uploadButton_Click"   />
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Fil måste väljas" ControlToValidate="GalleryFileUploader" Display="Dynamic">*</asp:RequiredFieldValidator>
             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Rätt filtyp måste väljas (JPG, PNG, GIF)" Text="*" ControlToValidate="GalleryFileUploader" Display="Dynamic" ValidationExpression="^.*\.(gif|jpg|png)$">*</asp:RegularExpressionValidator>
-        </div>
+        </div>        
     </div>
     </form>
     <%-- ↓ Här kommer javascripten ↓--%>

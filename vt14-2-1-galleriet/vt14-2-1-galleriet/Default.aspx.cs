@@ -63,13 +63,15 @@ namespace vt14_2_1_galleriet
 
                 }catch(FormatException)
                 {
-                    throw new FormatException();
+                    var validator = new CustomValidator {
+                        IsValid = false,
+                        ErrorMessage = "Endast filer som innehåller en bild kan överföras."
+                    }; 
+                    Page.Validators.Add(validator);
+
                 }
             }
-            else
-            {
-                throw new ArgumentException("Data is not valid..");
-            }
+
 
             
             
